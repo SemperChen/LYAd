@@ -1,4 +1,4 @@
-package com.lyad;
+package com.falcon.sdkdemo;
 
 import com.facebook.react.ReactActivity;
 
