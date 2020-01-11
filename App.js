@@ -7,108 +7,68 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {ScrollView, Button,Platform,Text,StatusBar} from 'react-native';
+import LYAdBannerView from "./src/LYAdBannerView";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+class App extends React.Component {
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
+  constructor(props) {
+    super(props);
+    this.initialize()
+  }
+
+  initialize = () => {
+
+    if(Platform.OS === 'ios'){
+      this.appId = "1105344611";
+      this.bannerAdId = "1080958885885321";
+      this.splashAdId = "9040714184494018";
+      this.interstitialAdId = "1050652855580392";
+      this.rewardedVideoAdId = "8020744212936426";
+      this.feedAdId = "1020922903364636"
+
+    }else {
+      this.appId = "1101152570";
+      this.bannerAdId = "9079537218417626401";
+      this.splashAdId = "8863364436303842593";
+      this.interstitialAdId = "8575134060152130849";
+      this.feedAdId = "6040749702835933"
+    }
+    this.state={
+      isShow:false
+    }
+  };
+  componentWillMount(){
+    StatusBar.setHidden(false)
+  }
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+        <ScrollView>
+          {this.state.isShow?
+          <Button title={'12'} onPress={()=>{
+
+          }}/>:null}
+          <Button title={'你好'} onPress={()=>{
+            this.setState({
+              isShow:!this.state.isShow
+            })
+          }}/>
+          <LYAdBannerView
+              style={{borderWidth:1}}
+          />
+          <Text>HAO</Text>
+
         </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+    );
+  }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+
+
+
+}
 
 export default App;

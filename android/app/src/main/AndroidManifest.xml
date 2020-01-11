@@ -25,7 +25,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
       <activity
-        android:name="com.falcon.sdkdemo.BannerActivity"
+        android:name="com.falcon.sdkdemo.MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize">

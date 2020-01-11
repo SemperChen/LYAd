@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.react.bridge.ReactApplicationContext;
 import com.ly.adpoymer.interfaces.BannerListener;
 import com.ly.adpoymer.manager.BannerManager;
 
@@ -26,8 +27,45 @@ public class BannerActivity extends AppCompatActivity implements View.OnClickLis
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Banner广告示例");
         }
-        setContentView(R.layout.activity_banner);
-        initView();
+        mContainer = new FrameLayout(this);
+        // 设置Frame的信息包 为铺满全屏 new xxx.LayoutParams(x,y)
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        // 将信息包设置给view
+        mContainer.setLayoutParams(params);
+        setContentView(mContainer);
+//        initView();
+        this.createAdView();
+    }
+
+    public void createAdView() {
+        //请求Banner广告
+        BannerManager.getInstance(this).requestAd(this, "10519",
+                new BannerListener() {
+                    @Override
+                    public void onAdClick(String s) {
+                        Log.i("BannerActivity", "onAdClick " + s);
+                    }
+
+                    @Override
+                    public void onAdDisplay(String s) {
+                        Log.i("BannerActivity", "onAdDisplay " + s);
+                    }
+
+                    @Override
+                    public void onAdFailed(String s) {
+                        Log.i("BannerActivity", "onAdFailed " + s);
+                    }
+
+                    @Override
+                    public void onAdClose(String s) {
+                        Log.i("BannerActivity", "onAdClose " + s);
+                    }
+
+                    @Override
+                    public void onAdReady(String s) {
+                        Log.i("BannerActivity", "onAdReady " + s);
+                    }
+                }, mContainer, 3);
     }
 
     /**
