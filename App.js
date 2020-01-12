@@ -9,6 +9,7 @@
 import React from 'react';
 import {ScrollView, Button,Platform,Text,StatusBar} from 'react-native';
 import LYAdBannerView from "./src/LYAdBannerView";
+import LYAdNativeView from "./src/LYAdNativeView";
 
 class App extends React.Component {
 
@@ -57,10 +58,13 @@ class App extends React.Component {
               isShow:!this.state.isShow
             })
           }}/>
-          <LYAdBannerView
-              style={{borderWidth:1}}
-          />
-          <Text>HAO</Text>
+
+          <LYAdNativeView/>
+
+          <LYAdNativeView/>
+
+          <LYAdNativeView/>
+
 
         </ScrollView>
     );
