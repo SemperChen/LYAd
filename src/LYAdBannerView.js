@@ -29,7 +29,7 @@ class LYAdBannerView extends Component {
     }
 
     componentDidMount() {
-        setInterval(()=>{
+        this.timer = setInterval(()=>{
             this.isShow=!this.isShow
             if(this.isShow){
                 this.setState({ style: { width:WIDTH, height:height-1 } });
@@ -38,6 +38,10 @@ class LYAdBannerView extends Component {
             }
             // console.warn('componentDidMount')
         },2000)
+    }
+
+    componentWillUnmount() {
+        this.timer&&clearInterval(this.timer)
     }
 
     handleSizeChange(event) {
