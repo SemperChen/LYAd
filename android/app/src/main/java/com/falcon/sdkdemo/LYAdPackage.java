@@ -25,7 +25,8 @@ public class LYAdPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(@Nonnull ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new LYAdBannerViewManager(reactContext)
+                new LYAdBannerViewManager(reactContext),
+                new LYAdNativeViewManager(reactContext)
         );
     }
 }
