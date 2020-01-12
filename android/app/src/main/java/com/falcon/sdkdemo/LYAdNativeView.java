@@ -74,7 +74,7 @@ public class LYAdNativeView extends FrameLayout {
 
             @Override
             public void OnAdViewReceived(List<? extends View> adViews) {
-                Log.i("NativeActivity", "OnAdViewReceived");
+                Log.i("NativeActivity", String.valueOf(adViews.size()));
                 View view = adViews.get(0);
                 mContainer.addView(view);
                 nativeManager.NativeRender(view);

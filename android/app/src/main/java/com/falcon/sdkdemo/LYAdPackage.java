@@ -15,9 +15,6 @@ public class LYAdPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(@Nonnull ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-//                new GDTADSplashModule(reactContext),
-//                new GDTADInterstitialModule(reactContext),
-//                new GDTADRewardVideoModule(reactContext)
         );
     }
 
