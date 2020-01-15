@@ -1,5 +1,7 @@
 package com.falcon.sdkdemo;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -7,12 +9,14 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
+import com.ly.adpoymer.manager.NativeManager;
 
 import java.util.Map;
 
 public class LYAdNativeViewManager extends ViewGroupManager<LYAdNativeView> {
     private ReactApplicationContext applicationContext;
     public static final String EVENT_SIZE_CHANGE = "onNativeSizeChange";
+    private LYAdNativeView lyAdNativeView;
 
     LYAdNativeViewManager(ReactApplicationContext reactContext){
         this.applicationContext = reactContext;
@@ -27,7 +31,12 @@ public class LYAdNativeViewManager extends ViewGroupManager<LYAdNativeView> {
     @NonNull
     @Override
     protected LYAdNativeView createViewInstance(@NonNull ThemedReactContext reactContext) {
-        LYAdNativeView lyAdNativeView = new LYAdNativeView(reactContext);
+
+        if(lyAdNativeView!=null){
+            lyAdNativeView.nativeManager.NativeDestory(lyAdNativeView);
+        }
+//        lyAdNativeView=null;
+        lyAdNativeView = new LYAdNativeView(reactContext);
         lyAdNativeView.createAdView(applicationContext);
         return lyAdNativeView;
     }

@@ -20,7 +20,7 @@ import java.util.List;
 
 public class LYAdNativeView extends FrameLayout {
     private FrameLayout mContainer;
-    private NativeManager nativeManager;
+    public NativeManager nativeManager;
 
     public LYAdNativeView(@NonNull Context context) {
         super(context);
